@@ -1,0 +1,8 @@
+# Vertrauliche Projektunterlagen und Rohmaterialien
+input/
+
+# Lokale Betriebssystem- und Editor-Dateien
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
