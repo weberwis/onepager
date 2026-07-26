@@ -27,7 +27,7 @@ Vor der Domainumstellung wurden folgende Einträge ermittelt:
   `autodiscover.outlook.com`
 - MTA-STS-Ankündigung:
   `v=STSv1; id=2026072601`
-- `mta-sts.weber-wis.com` besitzt noch kein Webziel.
+- `mta-sts.weber-wis.com` zeigt auf den separaten GitHub-Pages-Host.
 
 ## DNS-Einträge für die Hauptwebsite
 
@@ -69,30 +69,33 @@ Folgende vorhandene Einträge bleiben unverändert:
 - vorhandene DKIM- und DMARC-Einträge
 - `_mta-sts`-TXT
 
-## MTA-STS
+## MTA-STS – aktiv
 
-Die angekündigte MTA-STS-Richtlinie benötigt einen separaten HTTPS-Host:
+Die angekündigte MTA-STS-Richtlinie ist über einen separaten HTTPS-Host
+erreichbar:
 
 `https://mta-sts.weber-wis.com/.well-known/mta-sts.txt`
 
-Die Quelldatei liegt im Repository unter:
+Öffentliches Repository:
 
-`mta-sts-policy/.well-known/mta-sts.txt`
+`https://github.com/weberwis/mta-sts`
 
 Der konfigurierte MX
 `weberwis-com01c.mail.protection.outlook.com` passt zum vorgesehenen Muster
 `*.mail.protection.outlook.com`.
 
-Noch erforderlich:
+Geprüfter Status:
 
-1. separate statische Veröffentlichung für die MTA-STS-Datei bereitstellen;
-2. `mta-sts.weber-wis.com` per CNAME mit diesem Host verbinden;
-3. gültiges HTTPS ohne Zertifikatsfehler sicherstellen;
-4. Abruf der Richtlinie unter dem exakten Pfad testen;
-5. anschließend die Versions-ID des `_mta-sts`-TXT-Eintrags erhöhen.
+- GitHub-Pages-Build erfolgreich
+- Custom Domain `mta-sts.weber-wis.com`
+- TLS-Zertifikat genehmigt
+- HTTPS erzwungen
+- exakter Richtlinienpfad liefert HTTP 200
+- Content-Type `text/plain`
+- aktiver MX passt zum Richtlinienmuster
 
-Da `_mta-sts.weber-wis.com` den Standard bereits ankündigt, sollte dieser
-separate Host zeitnah eingerichtet werden.
+Beim nächsten inhaltlichen Update der Richtlinie muss auch die Versions-ID des
+`_mta-sts`-TXT-Eintrags erhöht werden.
 
 ## Rechtliche Freigabe
 
